@@ -1,0 +1,14 @@
+job_prod:
+  script:
+    - echo "Asking to Laravel Forge deploying on productive"
+    - curl -X GET $WEBHOOK_PROD
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"
+
+job_dev:
+  script:
+    - echo "Asking to Laravel Forge deploying on staging"
+    - curl -X GET $WEBHOOK_STAGING
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
+
